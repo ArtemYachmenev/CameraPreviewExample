@@ -24,18 +24,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#2196F3"
-                android:textColor="#FFFFFF"
                 android:onClick="onClickFullScreen"
-                android:text="@string/full_screen" />
+                android:text="@string/full_screen"
+                android:textColor="#212121" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="#2196F3"
-                android:textColor="#FFFFFF"
                 android:onClick="onClickDynamicSize"
-                android:text="@string/dynamic_size" />
+                android:text="@string/dynamic_size"
+                android:textColor="#212121" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

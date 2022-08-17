@@ -1,14 +1,23 @@
 package com.vk.camerapreviewexample.camera;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraManager;
+import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import androidx.core.app.ActivityCompat;
 
 import com.vk.camerapreviewexample.exception.ExceptionUtility;
 
@@ -45,6 +54,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         // deprecated setting, but required on Android versions prior to 3.0
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
+
+
+
 
     public void surfaceCreated(SurfaceHolder holder) {
         // empty. surfaceChanged will take care of stuff
@@ -195,4 +207,8 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     public Camera.Size getPictureSize() {
         return mPictureSize;
     }
+
+
+
+
 }

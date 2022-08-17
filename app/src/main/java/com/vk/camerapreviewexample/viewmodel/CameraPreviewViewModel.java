@@ -30,6 +30,7 @@ public class CameraPreviewViewModel {
     private Context context;
     private ActivityFullScreenPreviewBinding activityFullScreenPreviewBinding;
 
+    private int cameraId=1;
     public CameraPreviewViewModel(Context context, ActivityFullScreenPreviewBinding activityFullScreenPreviewBinding) {
         this.context = context;
         this.activityFullScreenPreviewBinding = activityFullScreenPreviewBinding;
@@ -77,8 +78,22 @@ public class CameraPreviewViewModel {
     private Camera getCameraInstance() {
         if (mCamera == null)
             // mCamera = Camera.open(useBackCamera ? 0 : 1);
-            mCamera = Camera.open(1);
+            //раньше было 1 вместо cameraId
+            mCamera = Camera.open(cameraId);
         return mCamera;
+    }
+
+    public void setCameraInstance(int i) {
+
+        if (cameraId==1){
+            cameraId=0;
+        }
+        else
+        {
+            cameraId=1;
+        }
+            mCamera = Camera.open(cameraId);
+
     }
 
     public void captureImage() {
@@ -87,7 +102,7 @@ public class CameraPreviewViewModel {
                 mCamera.takePicture(() -> {
                 }, null, (final byte[] bytes, Camera camera) -> {
                     try {
-                        mCamera.stopPreview();
+                       mCamera.startPreview();
                         saveImage(bytes);
                     } catch (Exception e) {
                         ExceptionUtility.logError(TAG, "takePicture", e);
@@ -109,9 +124,11 @@ public class CameraPreviewViewModel {
             outPut.write(imageData, 0, imageData.length);
             outPut.close();
             Toast.makeText(context, file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
-            ((Activity) context).finish();
+         //   ((Activity) context).finish();
         } catch (Exception e) {
             ExceptionUtility.logError(TAG, "saveImage", e);
         }
     }
+
+
 }
