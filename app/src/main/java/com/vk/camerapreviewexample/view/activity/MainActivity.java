@@ -102,7 +102,10 @@ public class MainActivity extends AppCompatActivity {
             cameraPreviewViewModel.captureImage();
         }
 
-
-
     }
+
+
+
+
+
 }
