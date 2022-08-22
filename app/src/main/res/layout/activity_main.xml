@@ -38,5 +38,7 @@
                 android:textColor="#212121" />
 
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
